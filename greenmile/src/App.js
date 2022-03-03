@@ -52,7 +52,7 @@ function App() {
             <Route path="/suppliers">
               <SuppliersList />
             </Route>
-            <Route path="/">
+            <Route path="/"exact>
               <SalesDashboard />
             </Route>
           </Switch>

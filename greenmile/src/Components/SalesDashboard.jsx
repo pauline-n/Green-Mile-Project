@@ -1,20 +1,30 @@
 import React from "react";
-import '../App.css'
-import { List, 
-    Divider, 
-    CssBaseline, 
-    AppBar, Drawer, 
-    Toolbar, ListItem, 
-    ListItemIcon, ListItemText, 
-    Typography,
-    Box, Button,
-    Avatar, IconButton,
-    TextField } from "@material-ui/core";
+import "../App.css";
+import {
+  List,
+  Divider,
+  CssBaseline,
+  AppBar,
+  Drawer,
+  Toolbar,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Typography,
+  Box,
+  Button,
+  Avatar,
+  IconButton,
+  TextField,
+  Grid,
+} from "@material-ui/core";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 import { makeStyles } from "@material-ui/core/styles";
 import NotificationsNoneOutlinedIcon from "@material-ui/icons/NotificationsNoneOutlined";
-import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
+import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
+import SuppliersList from "./SuppliersList";
+import ClerksList from "./ClerksList";
 
 const drawerWidth = 240;
 
@@ -40,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 function SalesDashboard() {
-    const classes = useStyles();
+  const classes = useStyles();
   return (
     <div className="base">
       <CssBaseline />
@@ -58,7 +68,7 @@ function SalesDashboard() {
               label="Search field"
               type="search"
               variant="outlined"
-              className= "search"
+              className="search"
             />
             <SearchOutlinedIcon />
             <NotificationsNoneOutlinedIcon />
@@ -78,21 +88,34 @@ function SalesDashboard() {
         }}
         anchor="left"
       >
+        <img src="./images/logo2.PNG" alt="logo" />
         <div className={classes.toolbar} />
         <Divider />
-        <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+        <Grid container spacing={3}>
+          <Grid item lg={3} sm={6} xl={3} xs={12}>
+            <SalesDashboard />
+          </Grid>
+          <Grid item lg={3} sm={6} xl={3} xs={12}>
+            <SuppliersList />
+          </Grid>
+          <Grid item lg={3} sm={6} xl={3} xs={12}>
+            <ClerksList />
+          </Grid>
+          {/* <Grid item lg={3} sm={6} xl={3} xs={12}>
+                <BestAssisstant sx={{ height: "100%" }} />
+              </Grid> */}
+        </Grid>
+        {/* <List>
+          {["Sales", "Suppliers", "Clerks", "Orders"].map((text, index) => (
             <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
+              
               <ListItemText primary={text} />
             </ListItem>
           ))}
-        </List>
+        </List> */}
         <Divider />
         <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
+          {["Returned items", "Blog", "Settings"].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
